@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = HealthyDiningFinder::VERSION
   s.authors     = ["Wilfrid Joseph Landry"]
   s.email       = ["joe.landry@cambiahealth.com"]
-  s.homepage    = "https://github.com/landrywj/hdf"
+  s.homepage    = "https://gitlab.cambiatools.com/basefit/healthy_dining_finder"
   s.summary     = "Library for interfacing with the Healthy Dining Finder API."
   s.description = " Description of HealthyDiningFinder."
   s.license     = "MIT"
