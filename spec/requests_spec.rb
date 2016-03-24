@@ -52,9 +52,9 @@ RSpec.describe "HDF Requests", :vcr do
         expect(req).to be_an(Array)
     end
     
-    it "Given an invalid address, keyword, sodium count and radius it returns nil" do 
-        req = HDF.dishes_by_sodium("97201", "chicken", "500", "8")
-        expect(req).to be_an(Array)
+    it "Given an invalid address, keyword, sodium count and radius it returns an empty array" do 
+        req = HDF.dishes_by_sodium("bad_zip", "chicken", "500", "8")
+        expect(req).to be_falsey
     end
     
 end

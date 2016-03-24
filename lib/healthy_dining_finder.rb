@@ -57,7 +57,11 @@ require_relative 'healthy_dining_finder/version.rb'
       address_encoded = URI.encode(address)
       target_url = URI("#{BASE_URL}/DishesBySodiumbyAddressRadiusJSON.svc/dish/sodium/#{TOKEN}/#{address_encoded}/#{keyword}/#{sodium}/#{radius}")
       result = json_response Net::HTTP.get(target_url)
-      dishes = result["dishesBySodiumbyAddressRadiusJSONResult"]["RestaurantMenuItemList"]
+      if result
+        dishes = result["dishesBySodiumbyAddressRadiusJSONResult"]["RestaurantMenuItemList"]
+      else
+          return false
+      end
   end
 
   private
