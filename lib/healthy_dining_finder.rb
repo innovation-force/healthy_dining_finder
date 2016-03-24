@@ -7,8 +7,8 @@ module HDF
   BASE_URL = ENV["HDF_BASE_URL"]
   TOKEN =  ENV["HDF_TOKEN"]
 
-  logger = Logger.new(STDOUT)
-  logger.level = Logger::WARN
+  @@logger = Logger.new STDOUT
+  @@logger.level = Logger::WARN
 
   def self.read_json(json_file)
       json_response(File.read(json_file))
@@ -21,7 +21,7 @@ module HDF
         clients = JSON.parse(result.body)
         clients["GetAllClientJSONResult"]["clientList"]
       else
-        logger.info(result.message)
+        @@logger.info(result.message)
         false
       end
   end
@@ -33,7 +33,7 @@ module HDF
           info = JSON.parse(result.body)
           info["getClientJSONResult"]["clientList"].first
       else
-          logger.info(result.message)
+          @@logger.info(result.message)
           false
       end
   end
@@ -45,7 +45,7 @@ module HDF
         dishes = JSON.parse(result.body)
         dishes["clientDishesAllDetailsJSONResult"]["RestaurantItemDetails"]
       else
-        logger.info(result.message)
+        @@logger.info(result.message)
         false
       end
   end
@@ -58,7 +58,7 @@ module HDF
           dishes = JSON.parse(result.body)
           dishes["clientDishesAllDetailsByAddressAndRadiusJSONResult"]["RestaurantMenuItemList"]
         else
-          logger.info(result.message)
+          @@logger.info(result.message)
           false
         end
   end
@@ -71,7 +71,7 @@ module HDF
           restaurants = JSON.parse(result.body)
           restaurants["restaurantLocationsByZipCodeCityStateJSONResult"]["LocationNCSRestaurant"]
         else
-          logger.info(result.message)
+          @@logger.info(result.message)
           false
         end
   end
@@ -84,7 +84,7 @@ module HDF
           dishes = JSON.parse(result.body)
           dishes["dishesBySodiumbyAddressRadiusJSONResult"]["RestaurantMenuItemList"]
         else
-          logger.info(result.message)
+          @@logger.info(result.message)
           false
         end
   end
