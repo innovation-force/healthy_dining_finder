@@ -1,0 +1,7 @@
+Thu, 10 Dec 2015 10:46:49 -0800
+lib/healthy_dining_finder.rb	Thu, 10 Dec 2015 09:31:40 -0800
+lib/sample_data/all_clients.json	Thu, 10 Dec 2015 09:31:40 -0800
+lib/hdf_request_radius.json	Thu, 10 Dec 2015 09:31:40 -0800
+lib/example.json	Thu, 10 Dec 2015 09:31:40 -0800
+lib/tasks/healthy_dining_finder_tasks.rake	Thu, 10 Dec 2015 09:31:40 -0800
+lib/healthy_dining_finder/version.rb	Thu, 10 Dec 2015 09:31:40 -0800

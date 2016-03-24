@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module HealthyDiningFinder - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-all_clients">::all_clients</a>
+    
+    <li ><a href="#method-c-all_dishes_for_client">::all_dishes_for_client</a>
+    
+    <li ><a href="#method-c-client_dishes_all_details">::client_dishes_all_details</a>
+    
+    <li ><a href="#method-c-client_dishes_all_details_by_radius">::client_dishes_all_details_by_radius</a>
+    
+    <li ><a href="#method-c-dishes_by_calories">::dishes_by_calories</a>
+    
+    <li ><a href="#method-c-dishes_by_sodium">::dishes_by_sodium</a>
+    
+    <li ><a href="#method-c-read_json">::read_json</a>
+    
+    <li ><a href="#method-c-restaurant_locations_dishes_all_details">::restaurant_locations_dishes_all_details</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-HealthyDiningFinder">
+  <h1 id="module-HealthyDiningFinder" class="module">
+    module HealthyDiningFinder
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="BASE_URL">BASE_URL
+        
+        <dd><p>Construct temporary URLs - TODO replace with Net::HTTP config block or use
+a hash for building URLs</p>
+        
+      
+        <dt id="TOKEN">TOKEN
+        
+        <dd>
+        
+      
+        <dt id="VERSION">VERSION
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-all_clients" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_clients</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="all_clients-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">all_clients</span>
+    <span class="ruby-comment">#Gets a list of all clients (restaurants) available from HDF</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}AllClientJSON.svc/client/#{TOKEN}&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+    <span class="ruby-comment"># client_list = json_response[&quot;GetAllClientJSONResult&quot;][&quot;clientList&quot;]</span>
+    <span class="ruby-comment"># client_list.map { |h| h[&quot;client_name&quot;] }</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-all_dishes_for_client" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_dishes_for_client</span><span
+            class="method-args">(client_code)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="all_dishes_for_client-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">all_dishes_for_client</span>(<span class="ruby-identifier">client_code</span>)
+    <span class="ruby-comment">#GetClientJSON - Gets a list of all dishes and data for a particular client.</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}AllClientJSON.svc/Client/#{TOKEN}/#{client_code}&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-client_dishes_all_details" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">client_dishes_all_details</span><span
+            class="method-args">(client_code)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="client_dishes_all_details-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">client_dishes_all_details</span>(<span class="ruby-identifier">client_code</span>)
+    <span class="ruby-comment">#ClientDishesAllDetailsJSON - This shows all client dish information for a particular client.</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}ClientDishesAllDetailsJSON.svc/Client/#{ TOKEN + &quot;/&quot; + client_code }&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-client_dishes_all_details_by_radius" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">client_dishes_all_details_by_radius</span><span
+            class="method-args">(address, radius)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="client_dishes_all_details_by_radius-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">client_dishes_all_details_by_radius</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">radius</span>)
+    <span class="ruby-comment">#ClientDishesAllDetailsByAddressRadius - This shows all dishes available at a particular location.</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}ClientDishesAllDetailsByAddressRadiusJSON.svc/dish/#{ TOKEN + &quot;/&quot; + address + &quot;/&quot; + radius }&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-dishes_by_calories" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dishes_by_calories</span><span
+            class="method-args">(address, keyword, calories, radius)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="dishes_by_calories-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dishes_by_calories</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">keyword</span>, <span class="ruby-identifier">calories</span>, <span class="ruby-identifier">radius</span>)
+    <span class="ruby-comment">#like Sodium, the service can narrow down on calories and keyword.</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}DishsByCaloriesByAddressRadiusJSON.svc/dish/calorie/#{ TOKEN + &quot;/&quot; + address + &quot;/&quot; + keyword + &quot;/&quot; + calories + &quot;/&quot; + radius }&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-dishes_by_sodium" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dishes_by_sodium</span><span
+            class="method-args">(address, keyword, sodium, radius)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="dishes_by_sodium-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dishes_by_sodium</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">keyword</span>, <span class="ruby-identifier">sodium</span>, <span class="ruby-identifier">radius</span>)
+    <span class="ruby-comment">#DishesBySodiumbyAddressRadiusJSON - This unique service allows you to search by location and sodium value for dish. Key here is to know that sodium numbers tend to be in the 500 plus range.</span>
+    <span class="ruby-comment">#In addition, this service can also include an ingredient or a keyword which would appear in the name or description of the dish. For example Turkey.</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}/DishesBySodiumbyAddressRadiusJSON.svc/dish/sodium/#{ TOKEN + &quot;/&quot; + address + &quot;/&quot; + keyword + &quot;/&quot; + sodium + &quot;/&quot; + radius }&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-read_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">read_json</span><span
+            class="method-args">(json_file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="read_json-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">read_json</span>(<span class="ruby-identifier">json_file</span>)
+    <span class="ruby-identifier">json_response</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">json_file</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-restaurant_locations_dishes_all_details" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">restaurant_locations_dishes_all_details</span><span
+            class="method-args">(restaurant_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="restaurant_locations_dishes_all_details-source">
+            <pre><span class="ruby-comment"># File lib/healthy_dining_finder.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">restaurant_locations_dishes_all_details</span>(<span class="ruby-identifier">restaurant_id</span>)
+    <span class="ruby-comment">#RestaurantLocationsDishesAllDetailsJSON - This shows all dishes available at a particular location.</span>
+    <span class="ruby-comment">#HDF clients share the same menu across all locations but this was created in case a future restaurant has certain local meals.</span>
+    <span class="ruby-identifier">target_url</span> = <span class="ruby-constant">URI</span>(<span class="ruby-node">&quot;#{BASE_URL}RestaurantLocationsDishesAllDetailsJSON.svc/Restaurant/#{ TOKEN + &quot;/&quot; + restaurant_id }&quot;</span>)
+    <span class="ruby-identifier">json_response</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">target_url</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
